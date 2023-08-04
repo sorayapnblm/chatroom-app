@@ -19,9 +19,7 @@ app.use(express.static(path.join(__dirname, 'html-scss-css-js')));
 
 
 // set up event handler for when a new websocket connection is established. 
-// execute each time a new user connects and log a message
 io.on('connection', socket => {
-    console.log('New WS Connection...');
 
     //send a welcome message to the new user in the console
     socket.emit('message', 'Welcome Soraya!')
@@ -34,6 +32,12 @@ io.on('connection', socket => {
     // Broadcast a message to all clients indicating that a user has left the chat.
     socket.on('disconnect', () => {
         io.emit('message', 'A user has left the chat');
+    })
+
+    //listen for chatMessage
+    socket.on('chatMessage', (msg) => {
+        console.log(msg);
+
     })
 
 })
