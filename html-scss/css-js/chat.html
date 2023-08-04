@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soraya's ChatRoom</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Stars backround -->
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+    <div id="stars4"></div>
+    <div id="stars5"></div>
+
+    <div class="container-chatroom">
+        <div class="container-chatroom-header">
+            ♡ Soraya's ChatRoom ... ♡
+        </div>
+        <main class="container-chatroom-main">
+
+            <div class="container-chatroom-main-sidebar">
+                <h2>Room Name</h2>
+                <h3 id="container-chatroom-main-room-name">Room 1</h3>
+                <h2>♡</h2>
+                <h2>Users</h2>
+                <ul id="container-chatroom-main-users">
+                    <li>User 1</li>
+                    <li>User 2</li>
+                    <li>User 3</li>
+                    <li>User 4</li>
+                    <li>User 5</li>
+                </ul>
+            </div>
+
+            <div class="container-chatroom-main-messages"></div>
+
+        </main>
+
+        <div class="container-chatroom-form">
+            <form id="container-chatroom-form-text">
+                <input 
+                    id="msg"
+                    type="text"
+                    placeholder="Enter Message"
+                    required
+                    autocomplete="off"
+                    />
+                <button class="container-chatroom-btn-send">Send</button>
+                <a href="index.html" class="container-chatroom-btn-leave">Leave Room</a>
+            </form>
+        </div>
+    </div>
+    <!-- In main.js we can access the io method and everything we need  -->
+    <script src="js/main.js"></script>
+
+</body>
+</html>
