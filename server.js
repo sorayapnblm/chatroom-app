@@ -22,10 +22,25 @@ app.use(express.static(path.join(__dirname, 'html-scss-css-js')));
 // execute each time a new user connects and log a message
 io.on('connection', socket => {
     console.log('New WS Connection...');
+
+    //send a welcome message to the new user in the console
+    socket.emit('message', 'Welcome Soraya!')
+
+    // Broadcast a message to all connected clients except the one who just joined
+    socket.broadcast.emit('message', 'A user has joined the chat');
+
+    // Runs when client disconnects 
+    // Event listener notified when a user disconnects.
+    // Broadcast a message to all clients indicating that a user has left the chat.
+    socket.on('disconnect', () => {
+        io.emit('message', 'A user has left the chat');
+    })
+
 })
 
 // initialize the port
-const PORT = 3000 || 3000;
+const PORT = process.env.PORT || 3000;
+
 
 // instruct the Express application to start listening on the specified port for incoming http requests
 // when the server starts successfully, it will log a message
