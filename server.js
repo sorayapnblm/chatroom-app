@@ -11,9 +11,18 @@ const socketio = require('socket.io');
 const app = express();
 //create an HTTP server instance using express as a request listener
 const server = http.createServer(app);
+// initialize socket.io using the server instance to handle real-time communication
+const io = socketio(server);
 
 // Set staic folder
 app.use(express.static(path.join(__dirname, 'html-scss-css-js')));
+
+
+// set up event handler for when a new websocket connection is established. 
+// execute each time a new user connects and log a message
+io.on('connection', socket => {
+    console.log('New WS Connection...');
+})
 
 // initialize the port
 const PORT = 3000 || 3000;
