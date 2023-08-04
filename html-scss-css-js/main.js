@@ -1,5 +1,5 @@
-// Get a reference to the 'container-chatroom-form' in the chat.html to allow the display of submitted message 
-const chatForm = document.getElementById('container-chatroom-form');
+// Get a reference to the 'container-chatroom-form-text' in the chat.html to allow the display of submitted message 
+const chatForm = document.getElementById('container-chatroom-form-text');
 
 // establish a connection to the server using socket.io
 const socket =io();
@@ -16,9 +16,9 @@ chatForm.addEventListener('submit', (e) => {
     // P the default form submission behavior, which would cause the page to reload.
     e.preventDefault();
 
-    //get the value of the input field
+    //get the value of the input field (message text)
     const msg = e.target.elements.msg.value;
 
-    // log the message content to the console.
-    console.log(msg);
+    // Emit message to server
+    socket.emit('chatMessage', msg)
 })
