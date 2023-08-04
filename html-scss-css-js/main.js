@@ -2,13 +2,14 @@
 const chatForm = document.getElementById('container-chatroom-form-text');
 
 // establish a connection to the server using socket.io
-const socket =io();
+const socket = io();
 
 //Set up a listener for the 'message' event from the server. 
 // When the server emits a 'message' event, this callback function will be executed.
 //  In this case, it logs the received message to the console.
 socket.on('message', message => {
     console.log(message);
+    outputMessage(message);
 })
 
 //message submit
@@ -22,3 +23,14 @@ chatForm.addEventListener('submit', (e) => {
     // Emit message to server
     socket.emit('chatMessage', msg)
 })
+
+// Output message to DOM
+function outputMessage(message) {
+    const div = document.createElement('div');
+    div.classList.add('message');
+    div.innerHTML = `<div class="container-chatroom-main-message-data"> ${message.username} <span>${message.time}</span> </div>
+    <div class="container-chatroom-main-message-text">
+        ${message.text}
+    </div>`;
+    document.querySelector('.container-chatroom-main-messages').appendChild(div);
+}
