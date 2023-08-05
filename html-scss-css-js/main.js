@@ -1,5 +1,7 @@
 // Get a reference to the 'container-chatroom-form-text' in the chat.html to allow the display of submitted message 
 const chatForm = document.getElementById('container-chatroom-form-text');
+const chatMessages = document.querySelector('.container-chatroom-main-messages');
+
 
 // establish a connection to the server using socket.io
 const socket = io();
@@ -10,6 +12,9 @@ const socket = io();
 socket.on('message', message => {
     console.log(message);
     outputMessage(message);
+
+    // Scroll down 
+    chatMessages.scrollTop = chatMessages.scrollHeight;
 })
 
 //message submit
@@ -22,6 +27,10 @@ chatForm.addEventListener('submit', (e) => {
 
     // Emit message to server
     socket.emit('chatMessage', msg)
+
+    // Clear input
+    e.target.elements.msg.value = '';
+    e.target.elements.msg.focus();
 })
 
 // Output message to DOM
