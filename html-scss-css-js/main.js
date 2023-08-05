@@ -2,9 +2,16 @@
 const chatForm = document.getElementById('container-chatroom-form-text');
 const chatMessages = document.querySelector('.container-chatroom-main-messages');
 
+// Get username and room from URL
+const { username, room } = Qs.parse(location.search, {
+    ignoreQueryPrefix: true
+})
 
 // establish a connection to the server using socket.io
 const socket = io();
+
+// Jion chatroom
+socket.emit('joinRoom', { username, room });
 
 //Set up a listener for the 'message' event from the server. 
 // When the server emits a 'message' event, this callback function will be executed.
