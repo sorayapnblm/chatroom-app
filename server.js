@@ -6,6 +6,7 @@ const http = require('http');
 const express = require('express');
 
 const socketio = require('socket.io');
+const formatMessage = require('./utils/messages');
 
 //create an instance of the Express application
 const app = express();
@@ -17,26 +18,26 @@ const io = socketio(server);
 // Set staic folder
 app.use(express.static(path.join(__dirname, 'html-scss-css-js')));
 
-
+const autoMessageName = ' Soraya ';
 // set up event handler for when a new websocket connection is established. 
 io.on('connection', socket => {
 
     //send a welcome message to the new user in the console
-    socket.emit('message', 'Welcome Soraya!')
+    socket.emit('message', formatMessage(autoMessageName, 'Welcome Soraya!'));
 
     // Broadcast a message to all connected clients except the one who just joined
-    socket.broadcast.emit('message', 'A user has joined the chat');
+    socket.broadcast.emit('message', formatMessage(autoMessageName, 'A user has joined the chat'));
 
     // Runs when client disconnects 
     // Event listener notified when a user disconnects.
     // Broadcast a message to all clients indicating that a user has left the chat.
     socket.on('disconnect', () => {
-        io.emit('message', 'A user has left the chat');
+        io.emit('message', formatMessage( autoMessageName, 'A user has left the chat'));
     })
 
     //listen for chatMessage
     socket.on('chatMessage', (msg) => {
-        io.emit('message', msg);
+        io.emit('message', formatMessage('USER' , msg));
 
     })
 
