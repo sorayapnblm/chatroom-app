@@ -33,7 +33,7 @@ io.on('connection', socket => {
         socket.join(user.room);
         
         //Send a welcome message to the new user in the console
-        socket.emit('message', formatMessage(autoMessageName, 'Welcome Soraya!'));
+        socket.emit('message', formatMessage(autoMessageName, 'Hi there, Soraya here ! Welcome on SpaceChat ! ♡'));
 
         // Broadcast a message to all connected clients except the one who just joined
         socket.broadcast.to(user.room).emit('message', formatMessage(autoMessageName, `${user.username} has joined the chat`));
