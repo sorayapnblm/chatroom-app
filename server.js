@@ -27,7 +27,9 @@ const autoMessageName = ' Soraya ';
 io.on('connection', socket => {
     // This block of code listens for the joinRoom event emitted by the client. It handles the logic when a user joins a chat room.
     socket.on('joinRoom', ({ username, room }) => {
+        // The userJoin function is called to create a user object and store it in the users array
         const user = userJoin(socket.id, username, room);
+        // The user is added to the socket.io room with the same name as the chat room they joined
         socket.join(user.room);
         
         //Send a welcome message to the new user in the console
