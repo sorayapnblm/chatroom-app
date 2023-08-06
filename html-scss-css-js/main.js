@@ -1,20 +1,23 @@
-// Get a reference to the 'container-chatroom-form-text' in the chat.html to allow the display of submitted message 
+// Get references to specific HTML elements in the chat.html module 
 const chatForm = document.getElementById('container-chatroom-form-text');
 const chatMessages = document.querySelector('.container-chatroom-main-messages');
 const roomName = document.getElementById('container-chatroom-main-room-name');
 const userList = document.getElementById('container-chatroom-main-users');
-// Get username and room from URL
+
+// Get username and room from URL 
 const { username, room } = Qs.parse(location.search, {
     ignoreQueryPrefix: true
 })
 
-// establish a connection to the server using socket.io
+// Set up a WebSocket connection to the server using socket.io by creating a socket object
 const socket = io();
 
-// Jion chatroom
+// Join chatroom
+// Emit a joinRoom event to the server => indicate that the current user is joining a specific chat room along with their username
 socket.emit('joinRoom', { username, room });
 
-// Get room and users
+
+// Set up a listener for the roomUsers event emitted by the server. This event is used to update the list of users in the chat room.
 socket.on('roomUsers', ({ room, users }) => {
     outputRoomName(room);
     outputUsers(users);
@@ -31,9 +34,10 @@ socket.on('message', message => {
     chatMessages.scrollTop = chatMessages.scrollHeight;
 })
 
-//message submit
+
+// Set up an event listener for the form's submit event. When the user submits the form (sends a message), the callback function is executed.
 chatForm.addEventListener('submit', (e) => {
-    // P the default form submission behavior, which would cause the page to reload.
+    // Prevent the default form submission behavior, which would cause the page to reload.
     e.preventDefault();
 
     //get the value of the input field (message text)
