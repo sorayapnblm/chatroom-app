@@ -31,6 +31,12 @@ io.on('connection', socket => {
 
         // Broadcast a message to all connected clients except the one who just joined
         socket.broadcast.to(user.room).emit('message', formatMessage(autoMessageName, `${user.username} has joined the chat`));
+
+        // send users and room info
+        io.to(user.room).emit('roomUsers', {
+            room: user.room,
+            users: getRoomUsers(user.room)
+        })
     })
 
 
@@ -50,6 +56,12 @@ io.on('connection', socket => {
 
         if(user) {
         io.to(user.room).emit('message', formatMessage( autoMessageName, `${user.username} has left the chat`));
+        
+        // send users and room info
+        io.to(user.room).emit('roomUsers', {
+            room: user.room,
+            users: getRoomUsers(user.room)
+        })
 
         }
 
