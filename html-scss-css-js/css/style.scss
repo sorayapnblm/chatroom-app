@@ -247,7 +247,7 @@ a {
 /* Chat Page */
 
 .container-chatroom {
-	width: 1000px;
+	width: 1200px;
 	height: 750px;
 	margin: 80px auto;
 	position: relative;
@@ -375,8 +375,8 @@ a {
 	font-weight: 50;
     letter-spacing: 1px;
 	border-radius: 20px;
-	width: 550px;
-	left: 265px;
+	width: 730px;
+	left: 310px;
 	background-color: bisque;
 	border: solid;
 	border-color: rgb(180, 119, 44);
@@ -385,10 +385,11 @@ a {
 
 }
 
+
 .container-chatroom-btn-send{
 	position: relative;
 	bottom: 4px;
-	left: 280px;		
+	left: 315px;		
 	cursor: pointer;
 	padding: 15px;
 	border-radius: 20px;
@@ -402,10 +403,12 @@ a {
 	border-color: rgb(180, 119, 44);
 }
 
+
+
 .container-chatroom-btn-leave{
 	position: relative;
 	bottom: 4px;
-	left: -620px;		
+	left: -780px;		
 	cursor: pointer;
 	padding: 22px;
 	border-radius: 20px;
