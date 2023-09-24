@@ -1,6 +1,6 @@
 # SpaceChat
 
-SpaceChat is a real-time chat web application with that allows users to connect, chat, join chat rooms and exchange messages in real-time.
+SpaceChat is a real-time chat web application that allows users to connect, join chat rooms and exchange messages in real-time.
 
 ## How to run 
 
