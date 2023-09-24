@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Soraya's ChatRoom</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-
-        <!-- Stars backround -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Stars backround -->
     <div id="stars"></div>
     <div id="stars2"></div>
     <div id="stars3"></div>
@@ -16,45 +15,40 @@
     <div id="stars5"></div>
 
     <main class="container-homepage-main">
-        <div class="container-homepage-main-header">
-            SpaceChat By Soraya ♡
+      <div class="container-homepage-main-header">SpaceChat By Soraya ♡</div>
+      <form action="chat.html">
+        <div class="form-control">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Enter username..."
+            required
+          />
         </div>
-        <form action="chat.html">
-            <div class="form-control">
-                <label for="username">Username</label>
-                <input
-                    type="text"
-                    name="username"
-                    id="username"
-                    placeholder="Enter username..."
-                    required
-                />
-            </div>
 
-            <div class="form-control">
-                <label for="room">Room</label>
-                <select name="room" id="room">
-                    <option value="Jupiter">Jupiter</option>
-                    <option value="Venus">Venus</option>
-                    <option value="Neptune">Neptune</option>
-                    <option value="Mars">Mars</option>
-                    <option value="Uranus">Uranus</option>
-                    <option value="Mercury">Mercury</option>
-                    <option value="Saturn">Saturn</option>
-                    <option value="Earth">Earth</option>
-                </select>
-            </div>
+        <div class="form-control">
+          <label for="room">Room</label>
+          <select name="room" id="room">
+            <option value="Jupiter">Jupiter</option>
+            <option value="Venus">Venus</option>
+            <option value="Neptune">Neptune</option>
+            <option value="Mars">Mars</option>
+            <option value="Uranus">Uranus</option>
+            <option value="Mercury">Mercury</option>
+            <option value="Saturn">Saturn</option>
+            <option value="Earth">Earth</option>
+          </select>
+        </div>
 
-            <button type="submit" class="btn">Join Chat</button>
-
-
-        </form>
-
+        <button type="submit" class="btn">Join Chat</button>
+      </form>
     </main>
     <div class="copyright">
-        Built and designed by Soraya Panambalom.
-        <br>All right reserved. &copy;
+      Built and designed by Soraya Panambalom.
+      <br />All right reserved. &copy;
     </div>
     <script src="main.js"></script>
-</body>
+  </body>
 </html>
